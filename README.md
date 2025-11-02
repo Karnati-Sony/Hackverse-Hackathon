@@ -64,5 +64,26 @@ Millions of Indian plot owners, especially in Tier 2 and Tier 3 cities, delay co
 4️⃣ Click **Estimate Now ⚡**  
 5️⃣ View breakdown + charts  
 6️⃣ Save or download PDF  
-7️⃣ Try saying — *“Estimate 2 BHK in Lucknow 10 by 8”* 🗣️  
+7️⃣ Try saying — *“Estimate 2 BHK in Lucknow 10 by 8”* 🗣️ 
+
+📸 HackVerse Output Screenshots  
+
+🧱 Hack 1 — Home & Input Panel  
+![Hack1 Screenshot](assets/hack1.png)  
+*Clean UI with inputs for length, width, city, and house type.*
+
+
+⚡ Hack 2 — AI Estimation in Action  
+![Hack2 Screenshot](assets/hack2.png)  
+*Instant “AI Estimating...” animation while generating results.*
+
+
+📊 Hack 3 — Result & Cost Breakdown  
+![Hack3 Screenshot](assets/hack3.png)  
+*Shows total estimated cost, pie chart breakdown, and average cost.*
+
+💾 Hack 4 — Save, Download, and Dark Mode  
+![Hack4 Screenshot](assets/hack4.png)  
+*Features save quote, PDF download, login modal, and dark mode UI.*
+
 
