@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrickRate — HackVerse Edition</title>
+
+  <!-- Fonts + icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="brickrate.css">
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- NOTE: Replace YOUR_GOOGLE_MAPS_API_KEY with your actual key -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">🏗️ <strong>BrickRate</strong></div>
+    <div class="nav-actions">
+      <button id="voiceBtn" title="Use voice input">🎙️ Voice</button>
+      <button id="themeToggle">🌙</button>
+      <button id="loginBtn">Login / Sign up</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="panel" id="inputPanel">
+      <h1>BrickRate — HackVerse Edition</h1>
+      <p class="muted">Instant construction cost estimator. Demo for HackVerse.</p>
+
+      <div class="grid">
+        <div class="field">
+          <label>Length (m)</label>
+          <input id="length" type="number" step="0.01" value="10">
+        </div>
+        <div class="field">
+          <label>Width (m)</label>
+          <input id="width" type="number" step="0.01" value="8">
+        </div>
+        <div class="field">
+          <label>City (auto-detect)</label>
+          <input id="city" type="text" placeholder="Click detect or type city">
+          <button id="detectCity" class="mini">Detect city</button>
+        </div>
+        <div class="field">
+          <label>House type</label>
+          <select id="houseType">
+            <option value="1bhk">1BHK</option>
+            <option value="2bhk" selected>2BHK</option>
+            <option value="kothi">Kothi / Large</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Floors</label>
+          <input id="floors" type="number" min="1" step="1" value="1">
+        </div>
+        <div class="field">
+          <label>Rate (₹ / sq.ft) — optional</label>
+          <input id="rateOverride" type="number" placeholder="leave empty to use city defaults">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="estimateBtn" class="primary">Estimate Now ⚡</button>
+        <button id="saveBtn" class="secondary">Save Quote</button>
+        <button id="downloadBtn" class="secondary">Download PDF</button>
+      </div>
+
+      <div id="aiLoader" class="loader" style="display:none">
+        <div class="spinner"></div>
+        <div>AI estimating... (demo)</div>
+      </div>
+    </section>
+
+    <section class="panel results" id="resultPanel" style="display:none">
+      <div class="result-header">
+        <h2>Estimate Result</h2>
+        <div id="welcomeUser" class="small muted"></div>
+      </div>
+
+      <div id="summary" class="summaryCard"></div>
+
+      <canvas id="breakdownChart" style="max-width:420px; margin-top:12px;"></canvas>
+
+      <div id="savedList" class="savedList"></div>
+    </section>
+  </main>
+
+  <!-- Login modal (localStorage auth) -->
+  <div id="authModal" class="modal" style="display:none">
+    <div class="modal-card">
+      <h3 id="authTitle">Login / Sign up</h3>
+      <div class="modal-body">
+        <input id="authEmail" type="email" placeholder="Email">
+        <input id="authPass" type="password" placeholder="Password">
+        <div class="modal-actions">
+          <button id="doSignup" class="secondary">Sign up</button>
+          <button id="doLogin" class="primary">Login</button>
+        </div>
+      </div>
+      <button id="closeAuth" class="closeBtn">✖</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" style="display:none"></div>
+
+   <footer class="footer">
+    <p>© 2025 BrickRate HackVerse Edition | Made with ❤️</p>
+  </footer>
+  <script src="brickrate.js"></script>
+</body>
+</html>

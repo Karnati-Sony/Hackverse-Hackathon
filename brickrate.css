@@ -1,0 +1,371 @@
+/* =======================================================
+   BrickRate – HackVerse Edition
+   Organized, readable CSS
+   Author: ChatGPT (for HackVerse demo)
+   ======================================================= */
+
+/* -----------------------------
+   1. Root Variables & Base
+------------------------------*/
+:root {
+  --bg-light: #f4f7fb;
+  --bg-dark: #0f172a;
+  --card-bg-light: #ffffff;
+  --card-bg-dark: rgba(30, 41, 59, 0.9);
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-light);
+  color: #0f172a;
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+/* Dark theme mode */
+body.dark {
+  background: var(--bg-dark);
+  color: #f1f5f9;
+}
+
+/* -----------------------------
+   2. Navigation Bar
+------------------------------*/
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav-actions button {
+  margin-left: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+.nav-actions button:hover {
+  transform: scale(1.05);
+}
+
+/* -----------------------------
+   3. Layout Containers
+------------------------------*/
+.wrap {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.panel {
+  background: var(--card-bg-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  flex: 1;
+  min-width: 320px;
+  transition: background 0.3s;
+}
+
+body.dark .panel {
+  background: var(--card-bg-dark);
+}
+
+/* -----------------------------
+   4. Typography
+------------------------------*/
+h1, h2, h3 {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.small {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* -----------------------------
+   5. Forms & Inputs
+------------------------------*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6eefc;
+  font-size: 0.95rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+button.mini {
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #eef6ff;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* -----------------------------
+   6. Buttons
+------------------------------*/
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+button.primary {
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+button.secondary {
+  background: transparent;
+  border: 1.4px solid var(--accent);
+  color: var(--accent);
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+button.secondary:hover {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* -----------------------------
+   7. Loader
+------------------------------*/
+.loader {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 4px solid #eef2ff;
+  border-left-color: var(--accent);
+  animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -----------------------------
+   8. Result & Saved Quotes
+------------------------------*/
+.results .result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryCard {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fbfdff;
+  border: 1px solid #eef5ff;
+}
+
+.savedList {
+  margin-top: 14px;
+}
+
+.savedItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #e5e7eb;
+}
+
+.savedItem button {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #eef6ff;
+  color: var(--accent);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.savedItem button:hover {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+/* -----------------------------
+   9. Modal (Login/Signup)
+------------------------------*/
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.modal-card {
+  background: var(--card-bg-light);
+  border-radius: 12px;
+  padding: 18px;
+  min-width: 320px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.modal-card input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e9f1ff;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* -----------------------------
+   10. Toast Notifications
+------------------------------*/
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #0f172a;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -----------------------------
+   11. Footer
+------------------------------*/
+.footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px;
+  margin-top: 18px;
+  border-top: 1px dashed #e5e7eb;
+  font-size: 0.9rem;
+}
+
+/* -----------------------------
+   12. Responsive
+------------------------------*/
+@media (max-width: 800px) {
+  .wrap { flex-direction: column; }
+  .nav { flex-wrap: wrap; }
+  .panel { padding: 16px; }
+}
